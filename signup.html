@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareerInfinity — Register your account on the AI-Powered Career Intelligence Platform. Create your profile to unlock career path modeling and skill benchmarking.">
+  <title>Create Account | CareerInfinity — AI-Powered Career Intelligence Platform</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main Application Wrapper -->
+  <main class="auth-page-wrapper">
+    <div class="auth-container">
+
+      <!-- Left Branding & Career Intelligence Presentation Panel -->
+      <section class="brand-panel" aria-label="CareerInfinity Platform Highlights">
+        <div class="brand-badge">
+          <span class="sparkle-icon" aria-hidden="true">&#10024;</span>
+          <span>Intelligent Career Trajectory</span>
+        </div>
+
+        <div class="brand-header">
+          <a href="index.html" class="brand-logo" aria-label="CareerInfinity Home">
+            <div class="brand-logo-icon" aria-hidden="true">
+              <!-- Infinity Sparkle SVG Icon -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            </div>
+            <span class="brand-logo-text">CareerInfinity</span>
+          </a>
+
+          <h1 class="brand-headline">
+            Chart your next promotion with <span>data-driven precision.</span>
+          </h1>
+
+          <p class="brand-description">
+            Build your profile to unlock continuous AI career roadmaps, real-time market value estimation, and verified skill progression.
+          </p>
+        </div>
+
+        <!-- Career Intelligence Core Pillars -->
+        <ul class="brand-features" role="list">
+          <li class="brand-feature-item">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <div class="feature-texts">
+              <h4>Predictive Career Velocity</h4>
+              <p>Simulate career moves across industries before making high-stakes decisions.</p>
+            </div>
+          </li>
+
+          <li class="brand-feature-item">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+            <div class="feature-texts">
+              <h4>Benchmark-Driven Profiles</h4>
+              <p>Compare your engineering and analytical proficiencies with top decile performers.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Right White Registration Card -->
+      <section class="auth-card" aria-label="Sign Up Form Card">
+        <header class="card-header">
+          <h2 class="card-title">Create your account</h2>
+          <p class="card-subtitle">Get started with CareerInfinity to model your career intelligence.</p>
+        </header>
+
+        <!-- Prototype Disclaimer Badge -->
+        <div class="demo-mode-banner" role="status">
+          <div class="demo-mode-icon" aria-hidden="true">&#9432;</div>
+          <div class="demo-mode-text">
+            <strong>Phase 1 UI Prototype:</strong> Client-side validation active. Form architecture is ready for future Firebase Authentication integration.
+          </div>
+        </div>
+
+        <!-- Signup Form -->
+        <form id="signupForm" class="auth-form" novalidate autocomplete="on">
+          <!-- Full Name Field -->
+          <div class="form-group" id="fullNameGroup">
+            <label for="fullName" class="form-label">
+              <span>Full Name</span>
+            </label>
+            <div class="input-container">
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                class="form-input"
+                placeholder="Jane Doe"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="fullNameError"
+              />
+            </div>
+            <p class="error-message" id="fullNameError" role="alert">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please enter your full name (at least 2 characters).</span>
+            </p>
+          </div>
+
+          <!-- Email Input Field -->
+          <div class="form-group" id="emailGroup">
+            <label for="email" class="form-label">
+              <span>Email Address</span>
+            </label>
+            <div class="input-container">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="name@company.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                aria-describedby="emailError"
+              />
+            </div>
+            <p class="error-message" id="emailError" role="alert">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Please enter a valid email address.</span>
+            </p>
+          </div>
+
+          <!-- Create Password Field -->
+          <div class="form-group" id="passwordGroup">
+            <div class="form-label">
+              <label for="password">Create Password</label>
+            </div>
+            <div class="input-container has-toggle">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                placeholder="At least 8 characters"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                aria-describedby="passwordError passwordStrengthText"
+              />
+              <button
+                type="button"
+                class="password-toggle-btn"
+                data-target="password"
+                aria-label="Show password as plain text"
+                title="Toggle password visibility"
+              >
+                <!-- Eye Open Icon -->
+                <svg class="eye-open-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Closed Icon -->
+                <svg class="eye-closed-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Real-time Password Strength Meter -->
+            <div class="password-strength-container" aria-live="polite">
+              <div class="strength-meter-bar" id="strengthMeterBar">
+                <span class="strength-segment"></span>
+                <span class="strength-segment"></span>
+                <span class="strength-segment"></span>
+                <span class="strength-segment"></span>
+              </div>
+              <span class="strength-text" id="passwordStrengthText">Password strength: Empty</span>
+            </div>
+
+            <p class="error-message" id="passwordError" role="alert">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Password must be 8+ characters with uppercase, lowercase, and a number.</span>
+            </p>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div class="form-group" id="confirmPasswordGroup">
+            <div class="form-label">
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+            <div class="input-container has-toggle">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                class="form-input"
+                placeholder="Re-enter your password"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                aria-describedby="confirmPasswordError"
+              />
+              <button
+                type="button"
+                class="password-toggle-btn"
+                data-target="confirmPassword"
+                aria-label="Show confirmation password as plain text"
+                title="Toggle password visibility"
+              >
+                <!-- Eye Open Icon -->
+                <svg class="eye-open-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Closed Icon -->
+                <svg class="eye-closed-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <p class="error-message" id="confirmPasswordError" role="alert">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Passwords do not match. Please verify.</span>
+            </p>
+          </div>
+
+          <!-- Terms & Privacy Agreement Checkbox -->
+          <div class="form-group" id="termsGroup">
+            <label class="checkbox-label" for="agreeTerms">
+              <input type="checkbox" id="agreeTerms" name="agreeTerms" required aria-required="true" aria-describedby="termsError">
+              <span>I agree to the <a href="#" class="text-link" id="termsLink">Terms of Service</a> and <a href="#" class="text-link" id="privacyLink">Privacy Policy</a></span>
+            </label>
+            <p class="error-message" id="termsError" role="alert">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>You must accept the terms before creating an account.</span>
+            </p>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="submitSignupBtn" class="submit-btn">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="btn-text">Create Free Account</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Navigation Switch to Login -->
+        <footer class="card-footer">
+          <p>Already have an account? <a href="index.html" class="text-link">Sign in</a></p>
+        </footer>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 CareerInfinity. AI-Powered Career Intelligence Platform &bull; Phase 1: Authentication Module</p>
+  </footer>
+
+  <!-- Notification Toast (For Simulation & Feedback) -->
+  <aside id="feedbackToast" class="feedback-toast" role="status" aria-live="polite">
+    <div class="toast-icon" aria-hidden="true">&#10003;</div>
+    <div class="toast-content">
+      <h3 class="toast-title" id="toastTitle">Registration Simulation Complete</h3>
+      <p class="toast-message" id="toastMessage">Your CareerInfinity profile was simulated successfully.</p>
+    </div>
+    <button type="button" class="toast-close" id="toastCloseBtn" aria-label="Close notification">&times;</button>
+  </aside>
+
+  <!-- JavaScript Module -->
+  <script src="script.js"></script>
+</body>
+</html>

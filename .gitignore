@@ -1,0 +1,98 @@
+# =============================================================================
+# CareerInfinity — AI-Powered Career Intelligence Platform
+# .gitignore — Files and directories excluded from version control
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# SECRETS & CREDENTIALS  ← NEVER commit these to GitHub
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Firebase service account / API key files
+firebase-key.json
+serviceAccountKey.json
+google-services.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# -----------------------------------------------------------------------------
+# DEPENDENCY DIRECTORIES (added in future phases with Node.js / npm)
+# -----------------------------------------------------------------------------
+node_modules/
+jspm_packages/
+
+# -----------------------------------------------------------------------------
+# BUILD OUTPUT (added in future phases with bundlers like Vite / Webpack)
+# -----------------------------------------------------------------------------
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# -----------------------------------------------------------------------------
+# OPERATING SYSTEM GENERATED FILES
+# -----------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# -----------------------------------------------------------------------------
+# EDITOR & IDE CONFIGURATION
+# -----------------------------------------------------------------------------
+# VS Code — allow shared workspace settings, ignore personal preferences
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# JetBrains IDEs (WebStorm, IntelliJ)
+.idea/
+*.iml
+
+# Vim / Emacs swap files
+*.swp
+*.swo
+*~
+
+# Sublime Text
+*.sublime-workspace
+
+# -----------------------------------------------------------------------------
+# LOG & DEBUG FILES
+# -----------------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -----------------------------------------------------------------------------
+# TESTING & COVERAGE (future phases)
+# -----------------------------------------------------------------------------
+coverage/
+.nyc_output/
+
+# -----------------------------------------------------------------------------
+# TEMPORARY & MISC FILES
+# -----------------------------------------------------------------------------
+*.tmp
+*.bak
+*.orig
