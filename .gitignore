@@ -20,6 +20,13 @@ google-services.json
 *.p12
 *.pfx
 
+# Supabase local configuration (if you create a local secrets file)
+# The main supabase-client.js uses placeholder values and is safe to commit.
+# If you create a copy with real credentials, add it here:
+supabase-client.local.js
+supabase.config.local.js
+.supabase/
+
 # -----------------------------------------------------------------------------
 # DEPENDENCY DIRECTORIES (added in future phases with Node.js / npm)
 # -----------------------------------------------------------------------------

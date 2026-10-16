@@ -3,14 +3,14 @@
 # 🚀 CareerInfinity
 ### AI-Powered Career Intelligence Platform
 
-[![Phase](https://img.shields.io/badge/Phase-1%3A%20Authentication-7c3aed?style=for-the-badge)](#)
+[![Phase](https://img.shields.io/badge/Phase-3%3A%20Resume%20Upload-7c3aed?style=for-the-badge)](#)
 [![Status](https://img.shields.io/badge/Status-Active%20Development-22c55e?style=for-the-badge)](#)
-[![Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20JavaScript-4f46e5?style=for-the-badge)](#)
+[![Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20Supabase-4f46e5?style=for-the-badge)](#)
 [![License](https://img.shields.io/badge/License-MIT-64748b?style=for-the-badge)](#)
 
 *Navigate your career with predictive AI intelligence.*
 
-[View Login Page](#getting-started) · [View Signup Page](#getting-started) · [Report a Bug](../../issues) · [Future Roadmap](#roadmap)
+[View Login Page](#getting-started) · [View Signup Page](#getting-started) · [View Dashboard](#getting-started) · [Report a Bug](../../issues) · [Future Roadmap](#roadmap)
 
 </div>
 
@@ -20,10 +20,10 @@
 
 - [About the Project](#about-the-project)
 - [Technology Stack](#technology-stack)
-- [Phase 1 Features](#phase-1-features-authentication-module)
+- [Modules Built](#modules-built)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-- [Important Security Note](#important-security-note)
+- [Important Limitations](#important-limitations)
 - [Roadmap](#roadmap)
 - [Git Workflow](#git-workflow)
 - [Contributing](#contributing)
@@ -41,7 +41,7 @@
 
 This project is developed **modularly, one phase at a time**, under mentor guidance. Each phase introduces a focused set of features without disrupting earlier work.
 
-> **Current Status:** Phase 1 — Authentication Module (UI Prototype)
+> **Current Status:** Phase 2 — Dashboard Module (UI Prototype)
 
 ---
 
@@ -51,27 +51,27 @@ This project is developed **modularly, one phase at a time**, under mentor guida
 |:------|:-----------|:--------|
 | Structure | HTML5 (Semantic) | Accessible, SEO-friendly page markup |
 | Styling | CSS3 + Custom Properties | Design system tokens, animations, responsive layout |
-| Logic | Vanilla JavaScript (ES6+) | Form validation, DOM interaction, UI state |
+| Logic | Vanilla JavaScript (ES6+) | Form validation, DOM interaction, UI state, routing |
 | Typography | Google Fonts — *Plus Jakarta Sans* | Modern, professional brand typeface |
-| **Phase 2 (Planned)** | Firebase Authentication | Real user sign-in, registration, and session management |
-| **Phase 3 (Planned)** | Node.js / Express or Next.js | Backend API and server-side rendering |
+| **Phase 3 (Planned)** | Firebase Authentication | Real user sign-in, registration, and session management |
+| **Phase 4 (Planned)** | Node.js / Express or Next.js | Backend API and server-side rendering |
 
 ---
 
-## Phase 1 Features: Authentication Module
+## Modules Built
 
-### ✅ Login Page (`index.html`)
+### ✅ Module 1 — Login Page (`index.html` + `style.css` + `script.js`)
 - [x] Email address and password input fields
 - [x] Show / Hide password toggle button with SVG eye icons
 - [x] "Remember this device" checkbox
 - [x] Real-time client-side validation (email format, empty field detection)
 - [x] Accessible error messages with `aria-invalid` and `role="alert"`
 - [x] Auto-fill helper button for mentor / reviewer demonstrations
-- [x] Simulated loading spinner and success toast notification
-- [x] "Forgot password?" link (ready for Phase 2 reset flow)
+- [x] Simulated loading spinner → redirects to dashboard on success
+- [x] "Forgot password?" link (ready for Phase 3 reset flow)
 - [x] Navigation link to the registration page
 
-### ✅ Registration Page (`signup.html`)
+### ✅ Module 2 — Registration Page (`signup.html`)
 - [x] Full name, email, create password, and confirm password fields
 - [x] Real-time 4-segment password strength meter (Weak → Fair → Good → Strong)
 - [x] Password requirements: 8+ characters, uppercase, lowercase, and a number
@@ -81,13 +81,60 @@ This project is developed **modularly, one phase at a time**, under mentor guida
 - [x] Simulated loading state and success toast notification
 - [x] Navigation link back to the login page
 
-### ✅ Shared Design System (`style.css`)
+### ✅ Module 3 — Dashboard (`dashboard.html` + `dashboard.css` + `dashboard.js`)
+
+**A. Sidebar Navigation**
+- [x] CareerInfinity logo and brand name
+- [x] Dashboard (active), My Profile, Skills Assessment, Career Roadmap, Learning Resources, Job Opportunities, Settings
+- [x] Each non-built module clearly labelled as "Soon" with a badge
+- [x] Functional Logout button that clears session and returns to `index.html`
+- [x] Collapsible sidebar on mobile with hamburger menu
+
+**B. Top Navigation Bar**
+- [x] Dynamic welcome message with user's name (from demo session) and current date
+- [x] Search field (UI complete, search functionality is Phase 3)
+- [x] Notification bell icon (Coming Soon modal)
+- [x] User avatar with initials and display name
+- [x] Responsive mobile hamburger toggle
+
+**C. Overview Stat Cards (4 cards)**
+- [x] Skills Identified — with trend indicator
+- [x] Learning Progress — with mini progress bar
+- [x] Career Goals — with quarter achievement note
+- [x] Courses Completed — with weekly trend
+- [x] All labelled as "Sample" demonstration data
+
+**D. Career Development Section**
+- [x] Career Readiness Score with animated progress bar (74/100 — sample)
+- [x] Current Learning Goals with 3 progress bars
+- [x] Recommended Next Steps (numbered action list)
+- [x] Weekly Learning Activity bar chart (pure SVG, 7-day view — sample)
+- [x] Recent Activity feed (4 activity items — sample)
+
+**E. Skills Overview**
+- [x] 6 skills: Python, Machine Learning, Data Analysis, SQL, Communication, Data Visualization
+- [x] Animated progress bars with colour coding
+- [x] Skill level labels (Beginner / Intermediate / Advanced)
+- [x] Clearly labelled as demonstration values, not from a real assessment
+
+**F. Career Action Panel**
+- [x] 4 action cards: Explore Career Paths, Build My Learning Roadmap, Improve My Skills, Explore Job Opportunities
+- [x] Each card clearly shows "Coming Soon — Phase X" with a pill badge
+- [x] Hover animations and premium card design
+
+**Accessibility**
+- [x] All interactive elements have unique IDs and descriptive `aria-label` attributes
+- [x] Progress bars use `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
+- [x] Modal uses `role="dialog"`, `aria-modal="true"`, focus management, and ESC key close
+- [x] Keyboard-friendly with visible `:focus-visible` states on all controls
+- [x] Screen reader text via `.sr-only` utility class
+
+### ✅ Shared Design System
 - [x] Dark navy blue canvas (`#0a0f1d`) with ambient purple radial gradients
 - [x] Vibrant purple / indigo accent palette (`#7c3aed`, `#4f46e5`)
-- [x] White card elevation with soft layered shadows
-- [x] Responsive layout: two-column split on desktop, stacked card on mobile
-- [x] Smooth micro-animations on hover, focus, error display, and toast entrance
-- [x] CSS Custom Properties design token system for easy theming
+- [x] CSS Custom Properties design token system (same tokens across all pages)
+- [x] Smooth micro-animations on hover, focus, and card entrance
+- [x] Responsive layout: sidebar + main on desktop, hamburger menu on mobile
 
 ---
 
@@ -96,19 +143,23 @@ This project is developed **modularly, one phase at a time**, under mentor guida
 ```
 CareerInfinity/
 │
-├── index.html          # Phase 1 — Login page (Sign In)
-├── signup.html         # Phase 1 — Registration page (Create Account)
-├── style.css           # Shared design system stylesheet
-├── script.js           # Client-side validation, password toggles, simulation logic
+├── index.html          # Module 1 — Login page (Sign In)
+├── signup.html         # Module 1 — Registration page (Create Account)
+├── style.css           # Shared design system stylesheet (auth pages)
+├── script.js           # Auth: validation, password toggles, login → dashboard redirect
+│
+├── dashboard.html      # Module 3 — Career Intelligence Dashboard
+├── dashboard.css       # Dashboard-specific styles (extends design system)
+├── dashboard.js        # Dashboard: sidebar, logout, modal, animations, user display
 │
 ├── .gitignore          # Git exclusion rules (secrets, OS files, future build artifacts)
 └── README.md           # This file
 │
 │   ── Planned Future Directories ──
 │
-├── dashboard/          # Phase 2 — Career Intelligence Dashboard (planned)
-├── resume/             # Phase 3 — AI Resume Analyzer (planned)
+├── profile/            # Phase 3 — My Profile page (planned)
 ├── skills/             # Phase 4 — Skill Gap Diagnostic Engine (planned)
+├── roadmap/            # Phase 4 — Career Roadmap Generator (planned)
 ├── jobs/               # Phase 5 — Job Recommendation Feed (planned)
 └── api/                # Backend API / Firebase Cloud Functions (planned)
 ```
@@ -117,7 +168,7 @@ CareerInfinity/
 
 ## Getting Started
 
-No build tools or package installation required for Phase 1. Open with any modern browser.
+No build tools or package installation required. Open with any modern browser.
 
 ### Prerequisites
 - A modern web browser (Chrome, Edge, Firefox, Safari)
@@ -132,12 +183,12 @@ No build tools or package installation required for Phase 1. Open with any moder
    `File → Open Folder...`
 3. Install the **Live Server** extension if not already installed (`Ctrl+Shift+X` → search "Live Server").
 4. Right-click `index.html` in the Explorer panel and select **"Open with Live Server"**.
-5. Your browser will open at `http://127.0.0.1:5500/index.html` with live-reload on save.
+5. Your browser will open at `http://127.0.0.1:5500/index.html`.
 
 **Method 2 — Direct Browser Open**
 1. Navigate to the project folder in Windows Explorer.
 2. Double-click `index.html`. It will open in your default browser.
-3. Use the navigation links at the bottom of the card to switch between Login and Sign Up pages.
+3. Fill in the demo credentials and click Sign In to reach the Dashboard.
 
 **Method 3 — Python HTTP Server (Command Line)**
 ```bash
@@ -154,25 +205,27 @@ python -m http.server 3000
 | Email | `mentor@careerinfinity.ai` |
 | Password | `DemoPass123!` |
 
-> **Tip:** Click the **Auto-Fill** button on the login page to populate these instantly.
+> **Tip:** Click the **Auto-Fill** button on the login page to populate these instantly, then click **Sign In to CareerInfinity** to reach the dashboard.
 
 ---
 
-## Important Security Note
+## Important Limitations
 
-> **⚠️ This is a UI prototype — not a production authentication system.**
+> **⚠️ This is a frontend-only UI prototype — Phase 2.**
 
-Client-side JavaScript validation is a **User Experience (UX) tool**, not a security boundary. Anyone can open browser DevTools and bypass client-side checks. In this Phase 1 prototype:
+### What this prototype does NOT have:
+- ❌ **No real authentication** — login validation is client-side only. Anyone can bypass it via DevTools.
+- ❌ **No real database** — all data is hardcoded sample / demonstration data.
+- ❌ **No real AI** — skill assessments, career scores, and recommendations are static sample values.
+- ❌ **No real job listings** — job opportunity data is not connected to any live job market feed.
+- ❌ **No passwords stored** — only a display email is kept in `sessionStorage` for the demo greeting. It is removed on Logout.
+- ❌ **No real skill assessment** — the skills progress bars are demonstration values, not calculated from any real test.
 
-- No credentials are transmitted to any server.
-- No data is stored anywhere — all interactions are UI simulations.
-- The form architecture in `script.js` is deliberately structured so that Firebase Authentication (or any backend API) can be integrated in Phase 2 with **minimal code changes**.
-
-**Phase 2 will add real security** using:
-- **Firebase Authentication** (`signInWithEmailAndPassword`, `createUserWithEmailAndPassword`)
-- Server-side input validation
-- HTTP-only session cookies or JWT tokens
-- HTTPS enforcement
+### What IS ready for the future:
+- ✅ The `script.js` login flow is structured so Firebase Authentication can be swapped in with minimal changes (see comments in the file).
+- ✅ The `dashboard.js` data functions are isolated so they can be replaced with real API fetch calls.
+- ✅ The CSS design system uses Custom Properties, making theming and extension straightforward.
+- ✅ All ARIA roles and keyboard navigation are in place for a production-quality accessible UI.
 
 ---
 
@@ -181,84 +234,162 @@ Client-side JavaScript validation is a **User Experience (UX) tool**, not a secu
 | Phase | Module | Status |
 |:------|:-------|:-------|
 | **Phase 1** | 🔐 Authentication Module (Login + Registration UI) | ✅ Complete |
-| **Phase 2** | 🔗 Firebase Auth Integration (Real sign-in, session, password reset) | 🔜 Planned |
-| **Phase 3** | 📊 Career Intelligence Dashboard (Skill analytics, telemetry) | 🔜 Planned |
-| **Phase 4** | 📄 AI Resume Analyzer (Upload, score, and improve resume) | 🔜 Planned |
+| **Phase 2** | 📊 Career Intelligence Dashboard (UI + Sample Data) | ✅ Complete |
+| **Phase 3** | 🔗 Firebase Auth Integration (Real sign-in, session, password reset) | 🔜 Planned |
+| **Phase 4** | 👤 My Profile Page (Skills, experience, and career goals form) | 🔜 Planned |
 | **Phase 5** | 🧠 Skill Gap Diagnostic Engine (Role benchmarking) | 🔜 Planned |
-| **Phase 6** | 💼 Job Recommendation Feed (Live matching with job market) | 🔜 Planned |
-| **Phase 7** | 🎓 Learning Path Generator (Personalized upskilling plans) | 🔜 Planned |
+| **Phase 6** | 🗺️ Career Roadmap Generator (Personalized upskilling plan) | 🔜 Planned |
+| **Phase 7** | 📄 AI Resume Analyzer (Upload, score, and improve resume) | 🔜 Planned |
+| **Phase 8** | 💼 Job Recommendation Feed (Live matching with job market) | 🔜 Planned |
 
 ---
 
 ## Git Workflow
 
-### Initial Setup (First Time Only)
+### Committing the Dashboard Module
 ```bash
-# 1. Initialize Git inside the project folder
-git init
-
-# 2. Stage all files (respecting .gitignore)
-git add .
-
-# 3. Make your first commit
-git commit -m "feat(auth): initial release — Phase 1 authentication module"
-
-# 4. Rename the branch to main
-git branch -M main
-
-# 5. Link to your GitHub repository (replace YOUR_USERNAME with your GitHub handle)
-git remote add origin https://github.com/YOUR_USERNAME/CareerInfinity.git
-
-# 6. Push to GitHub
-git push -u origin main
-```
-
-### Daily Development Workflow
-```bash
-# Check which files have been changed
+# 1. Check which files changed
 git status
 
-# Stage all changed files
+# 2. Stage all new and modified files
 git add .
 
-# OR stage specific files only
-git add index.html style.css
+# 3. Commit with a clear, descriptive message
+git commit -m "feat(dashboard): Add CareerInfinity dashboard UI"
 
-# Commit with a descriptive message
-git commit -m "fix(login): improve password toggle accessibility label"
-
-# Push your changes to GitHub
+# 4. Push to GitHub
 git push
 ```
 
-### Commit Message Conventions
-Good commit messages help your mentor understand what changed and why.
+### What this commit includes
+| File | Change |
+|:-----|:-------|
+| `dashboard.html` | **New** — Full dashboard layout (sidebar, topbar, stats, chart, skills, actions) |
+| `dashboard.css` | **New** — Premium dark dashboard styles (navy/purple design system) |
+| `dashboard.js` | **New** — Sidebar toggle, logout, modal, animations, user display |
+| `script.js` | **Modified** — Login now redirects to `dashboard.html` after success |
+| `README.md` | **Modified** — Updated to reflect Phase 2 completion |
 
-| Prefix | Meaning | Example |
-|:-------|:--------|:--------|
-| `feat` | New feature added | `feat(signup): add real-time password strength meter` |
-| `fix` | Bug fix | `fix(login): correct email validation regex` |
-| `style` | Visual/CSS change only | `style(card): update card border radius to 20px` |
-| `refactor` | Code restructured (no feature change) | `refactor(script): extract validation into helper functions` |
-| `docs` | Documentation update | `docs: update README with Phase 2 roadmap` |
-| `chore` | Housekeeping (gitignore, configs) | `chore: add node_modules to .gitignore` |
+### Phase 3 — Resume Upload Module (Current)
+
+| File | Status | Description |
+|:-----|:-------|:------------|
+| `resume.html` | **Created** | Resume page: sidebar, breadcrumb, upload zone, resume list |
+| `resume.css` | **Created** | Resume styles — builds on dashboard.css design tokens |
+| `resume.js` | **Created** | ES module: upload, view, replace, delete with Supabase |
+| `supabase-client.js` | **Created** | Shared Supabase JS client — configure URL + anon key here |
+| `supabase/resumes.sql` | **Created** | Table, RLS policies, Storage bucket, Storage policies |
+| `dashboard.html` | **Modified** | Added My Resume nav link |
+| `.gitignore` | **Modified** | Added Supabase config exclusion entries |
+| `README.md` | **Modified** | Updated with Phase 3 documentation |
+
+---
+
+## Supabase Setup — Step-by-Step Checklist
+
+Run this once before using the Resume Upload module.
+
+**Step 1 — Create Supabase Project**
+- Go to supabase.com, sign in, click New Project
+- Set a name (e.g. careerinfinity), database password, and region
+- Wait ~1 minute for provisioning
+
+**Step 2 — Run SQL Schema**
+- Supabase Dashboard → SQL Editor → New Query
+- Copy everything from `supabase/resumes.sql` and paste, then click Run
+- Verify in Table Editor that the `resumes` table exists
+- Verify in Storage that the `resumes` bucket exists as Private
+- Verify in Auth → Policies that 8 policies exist (4 table + 4 storage)
+
+**Step 3 — Configure Supabase Client**
+- Supabase Dashboard → Settings → API
+- Copy Project URL and anon/public key
+- Open `supabase-client.js`, replace the two placeholder values
+- NEVER use the service_role key in browser code
+
+**Step 4 — Enable Email Auth**
+- Authentication → Providers → confirm Email is enabled
+- For local testing: Authentication → Settings → disable email confirmation
+
+**Step 5 — Connect Login Page to Supabase Auth**
+- Open `script.js`, find `simulateAuthRequest()`
+- Replace with: `supabase.auth.signInWithEmailAndPassword({ email, password })`
+- On success: `window.location.href = 'dashboard.html'`
+- On error: display the error message using `setFieldError()`
+
+---
+
+## Resume Module Features
+
+**Supported file types:** PDF (.pdf) and Word (.docx)
+**Maximum file size:** 5 MB (enforced client-side and by Storage bucket)
+**Storage:** Private Supabase Storage bucket — no public URLs
+**Access:** Short-lived signed URLs (1 hour) generated on demand
+**Security:** RLS on DB table + Storage policies enforce per-user isolation
+**XSS protection:** All user-supplied filenames displayed via textContent only
+
+---
+
+## Manual Test Plan
+
+| Test | Expected Result |
+|:-----|:----------------|
+| Upload valid PDF under 5 MB | Succeeds, file appears in resume list |
+| Upload valid DOCX under 5 MB | Succeeds, file appears in resume list |
+| Upload file over 5 MB | Client rejects with size error, no upload |
+| Upload unsupported type (.jpg) | Client rejects with type error, no upload |
+| Open resume.html without login | Redirected to index.html |
+| Click View on uploaded resume | File opens in new tab via signed URL |
+| Replace resume, new upload succeeds | New file active, old file cleaned up |
+| Replace resume, new upload fails | Old resume still available |
+| Delete resume, confirm in modal | File removed from Storage and DB |
+| User B tries to access User A file | Supabase 403 — Storage RLS blocks it |
+| Insert DB row with another user_id | DB RLS blocks it |
+| View page on mobile 375px | Responsive layout, all buttons accessible |
+| Drag and drop valid PDF | Preview shown, upload succeeds |
+
+---
+
+## Known Limitations
+
+- Login page still uses simulated auth — connect script.js to Supabase Auth for full end-to-end testing
+- Upload progress bar is animated through estimated stages (Supabase JS SDK v2 does not expose XHR byte-level progress events)
+- No AI resume analysis in this phase — planned for Phase 5
+- No in-browser PDF preview — files open in a new tab via signed URL
+- Email confirmation must be disabled for local testing (or verify email before first login)
+
+---
+
+## Future Development Plans
+
+| Phase | Feature |
+|:------|:--------|
+| Phase 2 (done) | Dashboard — sample data, progress bars, activity chart |
+| Phase 3 (current) | Resume upload, view, replace, delete — Supabase Storage + DB |
+| Phase 4 | My Profile — full Supabase integration, avatar upload |
+| Phase 5 | AI Resume Analysis — extract skills, experience, education |
+| Phase 6 | Skills Assessment Module |
+| Phase 7 | Career Roadmap Generation |
+| Phase 8 | Job Matching and Recommendations |
+
+---
+
+## Git Workflow
+
+```bash
+git add .
+git commit -m "Add secure resume upload with Supabase Storage"
+git push
+```
 
 ---
 
 ## Contributing
 
-This project is developed privately under mentor guidance. Contributions and suggestions from the mentor are welcomed through:
-
-1. **GitHub Issues** — for tracking bugs and feature requests.
-2. **Pull Requests** — for reviewing proposed code changes.
-3. **GitHub Discussions** — for architecture and design decisions.
+This project is developed privately under mentor guidance. Contributions and suggestions from the mentor are welcomed through GitHub Issues, Pull Requests, and GitHub Discussions.
 
 ---
 
-<div align="center">
-
-**CareerInfinity** &nbsp;·&nbsp; AI-Powered Career Intelligence Platform  
-Built with ❤️ using HTML5, CSS3 & Vanilla JavaScript  
-Phase 1: Authentication Module
-
-</div>
+CareerInfinity — AI-Powered Career Intelligence Platform
+Built with HTML5, CSS3, Vanilla JavaScript, and Supabase
+Phase 3: Resume Upload Module

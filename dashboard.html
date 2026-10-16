@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareerInfinity Dashboard — View your career intelligence overview, skill progress, and personalized career recommendations.">
+  <title>Dashboard | CareerInfinity — AI-Powered Career Intelligence Platform</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans — matches Login & Signup pages -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Dashboard Stylesheet (separate from auth style.css to avoid conflicts) -->
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- =====================================================================
+       MOBILE SIDEBAR OVERLAY (tap outside to close sidebar on mobile)
+       ===================================================================== -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       SIDEBAR NAVIGATION
+       ===================================================================== -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+
+    <!-- Sidebar Logo & Brand -->
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+      </div>
+      <span class="sidebar-logo-text">CareerInfinity</span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav" aria-label="Dashboard sections">
+      <ul class="nav-list" role="list">
+
+        <!-- Dashboard (Active) -->
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link active" id="navDashboard" aria-current="page" aria-label="Dashboard — current page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </li>
+
+        <!-- My Profile -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navProfile" aria-label="My Profile — coming soon" data-module="My Profile">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span class="nav-label">My Profile</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- My Resume (live — Phase 3) -->
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link" id="navResume" aria-label="My Resume — upload and manage your resume">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">My Resume</span>
+          </a>
+        </li>
+
+        <!-- Skills Assessment -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navSkills" aria-label="Skills Assessment — coming soon" data-module="Skills Assessment">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Skills Assessment</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Career Roadmap -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navRoadmap" aria-label="Career Roadmap — coming soon" data-module="Career Roadmap">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Career Roadmap</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Learning Resources -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navLearning" aria-label="Learning Resources — coming soon" data-module="Learning Resources">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Learning Resources</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Job Opportunities -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navJobs" aria-label="Job Opportunities — coming soon" data-module="Job Opportunities">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Job Opportunities</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Divider -->
+        <li class="nav-divider" role="separator" aria-hidden="true"></li>
+
+        <!-- Settings -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navSettings" aria-label="Settings — coming soon" data-module="Settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Settings</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="nav-item">
+          <button class="nav-link nav-logout-btn" id="logoutBtn" type="button" aria-label="Sign out and return to login page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Logout</span>
+          </button>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Sidebar Disclaimer -->
+    <div class="sidebar-disclaimer" role="note" aria-label="Phase information">
+      <span class="disclaimer-icon" aria-hidden="true">&#9432;</span>
+      <p>Phase 2–3 — Dashboard &amp; Resume module. Resume connected to Supabase.</p>
+    </div>
+
+  </aside>
+
+  <!-- =====================================================================
+       MAIN CONTENT AREA
+       ===================================================================== -->
+  <div class="dashboard-wrapper">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="topbar" role="banner">
+
+      <!-- Mobile hamburger menu button -->
+      <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
+
+      <!-- Welcome message -->
+      <div class="topbar-welcome">
+        <h1 class="topbar-greeting" id="topbarGreeting">Welcome back!</h1>
+        <p class="topbar-subtext" id="topbarSubtext">Here's your career intelligence overview for today.</p>
+      </div>
+
+      <!-- Right-side topbar controls -->
+      <div class="topbar-controls">
+
+        <!-- Search field -->
+        <div class="topbar-search">
+          <label for="dashboardSearch" class="sr-only">Search dashboard</label>
+          <span class="search-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input
+            type="search"
+            id="dashboardSearch"
+            class="search-input"
+            placeholder="Search dashboard..."
+            aria-label="Search dashboard sections"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Notification bell -->
+        <button class="topbar-icon-btn" id="notificationBtn" type="button" aria-label="View notifications (3 unread)" title="Notifications">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="notification-dot" aria-hidden="true"></span>
+        </button>
+
+        <!-- User avatar area -->
+        <button class="topbar-avatar-btn" id="avatarBtn" type="button" aria-label="User account menu" title="Account">
+          <div class="avatar-circle" id="avatarCircle" aria-hidden="true">
+            <span id="avatarInitials">CI</span>
+          </div>
+          <span class="avatar-name" id="avatarName">Career User</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+      </div>
+    </header>
+
+    <!-- MAIN SCROLLABLE CONTENT -->
+    <main class="dashboard-main" id="dashboardMain">
+
+      <!-- ================================================================
+           SECTION A: OVERVIEW STATS CARDS
+           ================================================================ -->
+      <section class="section" aria-labelledby="statsHeading">
+        <h2 class="sr-only" id="statsHeading">Career overview statistics</h2>
+
+        <div class="stats-grid">
+
+          <!-- Card 1: Skills Identified -->
+          <article class="stat-card stat-card--purple" aria-label="Skills Identified — sample data">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <span class="sample-tag" aria-label="This is sample data">Sample</span>
+            </div>
+            <div class="stat-value" aria-label="12 skills identified">12</div>
+            <div class="stat-label">Skills Identified</div>
+            <div class="stat-trend trend-up" aria-label="Trending up by 3 this month">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +3 this month
+            </div>
+          </article>
+
+          <!-- Card 2: Learning Progress -->
+          <article class="stat-card stat-card--blue" aria-label="Learning Progress — sample data">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <span class="sample-tag" aria-label="This is sample data">Sample</span>
+            </div>
+            <div class="stat-value" aria-label="68 percent learning progress">68%</div>
+            <div class="stat-label">Learning Progress</div>
+            <div class="stat-mini-bar" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="68% learning progress">
+              <div class="stat-mini-bar-fill" style="width: 68%;"></div>
+            </div>
+          </article>
+
+          <!-- Card 3: Career Goals -->
+          <article class="stat-card stat-card--teal" aria-label="Career Goals — sample data">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </div>
+              <span class="sample-tag" aria-label="This is sample data">Sample</span>
+            </div>
+            <div class="stat-value" aria-label="3 career goals">3</div>
+            <div class="stat-label">Career Goals</div>
+            <div class="stat-trend trend-neutral" aria-label="1 goal achieved this quarter">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              1 achieved this quarter
+            </div>
+          </article>
+
+          <!-- Card 4: Courses Completed -->
+          <article class="stat-card stat-card--orange" aria-label="Courses Completed — sample data">
+            <div class="stat-card-top">
+              <div class="stat-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <span class="sample-tag" aria-label="This is sample data">Sample</span>
+            </div>
+            <div class="stat-value" aria-label="5 courses completed">5</div>
+            <div class="stat-label">Courses Completed</div>
+            <div class="stat-trend trend-up" aria-label="Trending up by 2 this week">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+              +2 this week
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTIONS B+D: CAREER DEVELOPMENT + ACTIVITY CHART
+           ================================================================ -->
+      <section class="section two-col-section" aria-labelledby="careerDevHeading">
+        <h2 class="sr-only" id="careerDevHeading">Career development</h2>
+
+        <!-- Left column: Career Development Panel -->
+        <div class="col-left">
+
+          <!-- Career Readiness Progress -->
+          <div class="content-card" aria-label="Career readiness progress">
+            <div class="content-card-header">
+              <h3 class="content-card-title">Career Readiness Score</h3>
+              <span class="sample-tag" aria-label="This is sample data">Sample Data</span>
+            </div>
+            <div class="readiness-score-row">
+              <span class="readiness-score-value" aria-label="Career readiness score 74 out of 100">74</span>
+              <span class="readiness-score-label">/ 100</span>
+            </div>
+            <div class="readiness-bar-wrap">
+              <div class="readiness-bar" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" aria-label="Career readiness 74%">
+                <div class="readiness-bar-fill" style="width: 74%;"></div>
+              </div>
+            </div>
+            <p class="readiness-description">
+              Your profile is <strong>74% ready</strong> for a Data Analyst role. Complete the recommended steps below to improve your score.
+              <em class="demo-note">(Demonstration value — not from a real assessment)</em>
+            </p>
+          </div>
+
+          <!-- Current Learning Goals -->
+          <div class="content-card" aria-label="Current learning goals">
+            <div class="content-card-header">
+              <h3 class="content-card-title">Current Learning Goals</h3>
+              <span class="sample-tag">Sample Data</span>
+            </div>
+            <ul class="goals-list" role="list" aria-label="Current learning goals list">
+              <li class="goal-item goal-item--active">
+                <span class="goal-dot goal-dot--active" aria-hidden="true"></span>
+                <div class="goal-details">
+                  <span class="goal-name">Complete Python for Data Science</span>
+                  <span class="goal-progress-text" aria-label="80% complete">80%</span>
+                </div>
+                <div class="goal-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  <div class="goal-bar-fill" style="width: 80%;"></div>
+                </div>
+              </li>
+              <li class="goal-item">
+                <span class="goal-dot" aria-hidden="true"></span>
+                <div class="goal-details">
+                  <span class="goal-name">Learn SQL Advanced Queries</span>
+                  <span class="goal-progress-text" aria-label="55% complete">55%</span>
+                </div>
+                <div class="goal-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                  <div class="goal-bar-fill" style="width: 55%;"></div>
+                </div>
+              </li>
+              <li class="goal-item">
+                <span class="goal-dot" aria-hidden="true"></span>
+                <div class="goal-details">
+                  <span class="goal-name">Machine Learning Foundations</span>
+                  <span class="goal-progress-text" aria-label="30% complete">30%</span>
+                </div>
+                <div class="goal-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                  <div class="goal-bar-fill" style="width: 30%;"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recommended Next Steps -->
+          <div class="content-card" aria-label="Recommended next steps">
+            <div class="content-card-header">
+              <h3 class="content-card-title">Recommended Next Steps</h3>
+              <span class="sample-tag">Sample Data</span>
+            </div>
+            <ul class="steps-list" role="list" aria-label="Recommended next steps">
+              <li class="step-item">
+                <span class="step-number" aria-hidden="true">01</span>
+                <div class="step-content">
+                  <strong>Build a portfolio project</strong> using Python and a public dataset to demonstrate your analysis skills.
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-number" aria-hidden="true">02</span>
+                <div class="step-content">
+                  <strong>Complete SQL Advanced Queries</strong> — 3 more lessons until module completion.
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-number" aria-hidden="true">03</span>
+                <div class="step-content">
+                  <strong>Update your career profile</strong> to add recent project experience and certifications.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Right column: Activity Chart + Recent Activity -->
+        <div class="col-right">
+
+          <!-- Weekly Learning Activity Chart (pure SVG) -->
+          <div class="content-card chart-card" aria-label="Weekly learning activity chart — sample data">
+            <div class="content-card-header">
+              <h3 class="content-card-title">Weekly Learning Activity</h3>
+              <span class="sample-tag">Sample Data</span>
+            </div>
+            <p class="chart-subtitle">Hours spent learning this week (demonstration values)</p>
+
+            <div class="chart-container" role="img" aria-label="Bar chart: Mon 2h, Tue 1.5h, Wed 3h, Thu 2.5h, Fri 4h, Sat 1h, Sun 0.5h">
+              <svg class="activity-chart" viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <line x1="30" y1="20" x2="330" y2="20" stroke="rgba(148,163,184,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="30" y1="60" x2="330" y2="60" stroke="rgba(148,163,184,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="30" y1="100" x2="330" y2="100" stroke="rgba(148,163,184,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="30" y1="140" x2="330" y2="140" stroke="rgba(148,163,184,0.15)" stroke-width="1"/>
+                <text x="24" y="23" fill="#64748b" font-size="9" text-anchor="end">4h</text>
+                <text x="24" y="63" fill="#64748b" font-size="9" text-anchor="end">3h</text>
+                <text x="24" y="103" fill="#64748b" font-size="9" text-anchor="end">2h</text>
+                <text x="24" y="143" fill="#64748b" font-size="9" text-anchor="end">0h</text>
+                <rect class="chart-bar" x="42" y="100" width="26" height="40" rx="5" fill="url(#barGrad)"/>
+                <rect class="chart-bar" x="82" y="110" width="26" height="30" rx="5" fill="url(#barGrad)" opacity="0.8"/>
+                <rect class="chart-bar" x="122" y="60" width="26" height="80" rx="5" fill="url(#barGrad)"/>
+                <rect class="chart-bar" x="162" y="75" width="26" height="65" rx="5" fill="url(#barGradActive)"/>
+                <rect class="chart-bar" x="202" y="20" width="26" height="120" rx="5" fill="url(#barGradHighlight)"/>
+                <rect class="chart-bar" x="242" y="120" width="26" height="20" rx="5" fill="url(#barGrad)" opacity="0.7"/>
+                <rect class="chart-bar" x="282" y="130" width="26" height="10" rx="5" fill="url(#barGrad)" opacity="0.5"/>
+                <text x="55" y="155" fill="#64748b" font-size="9" text-anchor="middle">Mon</text>
+                <text x="95" y="155" fill="#64748b" font-size="9" text-anchor="middle">Tue</text>
+                <text x="135" y="155" fill="#64748b" font-size="9" text-anchor="middle">Wed</text>
+                <text x="175" y="155" fill="#64748b" font-size="9" text-anchor="middle">Thu</text>
+                <text x="215" y="155" fill="#94a3b8" font-size="9" text-anchor="middle" font-weight="600">Fri</text>
+                <text x="255" y="155" fill="#64748b" font-size="9" text-anchor="middle">Sat</text>
+                <text x="295" y="155" fill="#64748b" font-size="9" text-anchor="middle">Sun</text>
+                <defs>
+                  <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.85"/>
+                    <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.5"/>
+                  </linearGradient>
+                  <linearGradient id="barGradActive" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#a78bfa"/>
+                    <stop offset="100%" stop-color="#7c3aed"/>
+                  </linearGradient>
+                  <linearGradient id="barGradHighlight" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c4b5fd"/>
+                    <stop offset="100%" stop-color="#7c3aed"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+
+            <div class="chart-legend" aria-label="Chart legend">
+              <span class="legend-dot legend-dot--purple" aria-hidden="true"></span>
+              <span>Sample learning hours per day</span>
+              <span class="legend-highlight">Fri = peak day this week</span>
+            </div>
+          </div>
+
+          <!-- Recent Activity Feed -->
+          <div class="content-card" aria-label="Recent activity">
+            <div class="content-card-header">
+              <h3 class="content-card-title">Recent Activity</h3>
+              <span class="sample-tag">Sample Data</span>
+            </div>
+            <ul class="activity-feed" role="list" aria-label="Recent activity list">
+              <li class="activity-item">
+                <div class="activity-icon activity-icon--green" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">Completed <strong>Python Pandas Module 4</strong></p>
+                  <span class="activity-time">2 hours ago</span>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon activity-icon--purple" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">New skill identified: <strong>Data Visualization</strong></p>
+                  <span class="activity-time">Yesterday</span>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon activity-icon--blue" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">Career goal updated: <strong>Target — Data Analyst</strong></p>
+                  <span class="activity-time">2 days ago</span>
+                </div>
+              </li>
+              <li class="activity-item">
+                <div class="activity-icon activity-icon--orange" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  </svg>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-text">Enrolled in <strong>SQL for Analysts</strong> course</p>
+                  <span class="activity-time">3 days ago</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION E: SKILLS OVERVIEW
+           ================================================================ -->
+      <section class="section" aria-labelledby="skillsHeading">
+        <div class="content-card">
+          <div class="content-card-header">
+            <h2 class="content-card-title" id="skillsHeading">Skills Overview</h2>
+            <span class="sample-tag" aria-label="These are demonstration values, not from a real assessment">Sample Data — Demo Values</span>
+          </div>
+          <p class="section-description">
+            Skill levels shown below are <strong>demonstration values only</strong> — not from a real skills assessment. A full Skills Assessment module is planned for Phase 3.
+          </p>
+
+          <div class="skills-grid" aria-label="Skills progress list">
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent" aria-label="Python skill level 78%">78%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="Python 78%">
+                <div class="skill-bar-fill skill-bar--purple" style="width: 78%;"></div>
+              </div>
+              <span class="skill-level-label">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Machine Learning</span>
+                <span class="skill-percent" aria-label="Machine Learning skill level 42%">42%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" aria-label="Machine Learning 42%">
+                <div class="skill-bar-fill skill-bar--blue" style="width: 42%;"></div>
+              </div>
+              <span class="skill-level-label">Beginner</span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Data Analysis</span>
+                <span class="skill-percent" aria-label="Data Analysis skill level 65%">65%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Data Analysis 65%">
+                <div class="skill-bar-fill skill-bar--teal" style="width: 65%;"></div>
+              </div>
+              <span class="skill-level-label">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">SQL</span>
+                <span class="skill-percent" aria-label="SQL skill level 55%">55%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="SQL 55%">
+                <div class="skill-bar-fill skill-bar--indigo" style="width: 55%;"></div>
+              </div>
+              <span class="skill-level-label">Intermediate</span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Communication</span>
+                <span class="skill-percent" aria-label="Communication skill level 82%">82%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Communication 82%">
+                <div class="skill-bar-fill skill-bar--orange" style="width: 82%;"></div>
+              </div>
+              <span class="skill-level-label">Advanced</span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Data Visualization</span>
+                <span class="skill-percent" aria-label="Data Visualization skill level 38%">38%</span>
+              </div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="Data Visualization 38%">
+                <div class="skill-bar-fill skill-bar--pink" style="width: 38%;"></div>
+              </div>
+              <span class="skill-level-label">Beginner</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SECTION F: CAREER ACTION PANEL
+           ================================================================ -->
+      <section class="section" aria-labelledby="actionsHeading">
+        <h2 class="section-heading" id="actionsHeading">Career Actions</h2>
+        <p class="section-description">Choose an action to move forward in your career journey. Unfinished modules are clearly marked.</p>
+
+        <div class="actions-grid">
+
+          <!-- Action 1: Explore Career Paths -->
+          <article class="action-card action-card--coming-soon" aria-label="Explore Career Paths — coming soon">
+            <div class="action-icon action-icon--purple" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Explore Career Paths</h3>
+              <p class="action-description">Discover data-driven career trajectories that match your skills and interests.</p>
+            </div>
+            <div class="action-footer">
+              <span class="coming-soon-pill" aria-label="This feature is coming soon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Coming Soon — Phase 3
+              </span>
+            </div>
+          </article>
+
+          <!-- Action 2: Build My Learning Roadmap -->
+          <article class="action-card action-card--coming-soon" aria-label="Build My Learning Roadmap — coming soon">
+            <div class="action-icon action-icon--blue" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Build My Learning Roadmap</h3>
+              <p class="action-description">Get a personalized step-by-step plan to achieve your target career role.</p>
+            </div>
+            <div class="action-footer">
+              <span class="coming-soon-pill" aria-label="This feature is coming soon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Coming Soon — Phase 4
+              </span>
+            </div>
+          </article>
+
+          <!-- Action 3: Improve My Skills -->
+          <article class="action-card action-card--coming-soon" aria-label="Improve My Skills — coming soon">
+            <div class="action-icon action-icon--teal" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Improve My Skills</h3>
+              <p class="action-description">Take targeted assessments and get curated resources to close your skill gaps.</p>
+            </div>
+            <div class="action-footer">
+              <span class="coming-soon-pill" aria-label="This feature is coming soon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Coming Soon — Phase 5
+              </span>
+            </div>
+          </article>
+
+          <!-- Action 4: Explore Job Opportunities -->
+          <article class="action-card action-card--coming-soon" aria-label="Explore Job Opportunities — coming soon">
+            <div class="action-icon action-icon--orange" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3 class="action-title">Explore Job Opportunities</h3>
+              <p class="action-description">Browse AI-matched job listings aligned to your profile and skill level.</p>
+            </div>
+            <div class="action-footer">
+              <span class="coming-soon-pill" aria-label="This feature is coming soon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Coming Soon — Phase 6
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Dashboard Footer -->
+      <footer class="dashboard-footer" role="contentinfo">
+        <p>&copy; 2026 CareerInfinity &bull; AI-Powered Career Intelligence Platform &bull; Phase 2: Dashboard Module</p>
+        <p class="footer-note">All statistics, skills, and progress shown are <strong>sample demonstration data</strong> — not from a real AI assessment or backend system.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       "COMING SOON" MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close this dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title" id="modalTitle">Coming Soon</h2>
+      <p class="modal-desc" id="modalDesc">
+        <strong id="modalModuleName">This module</strong> is not yet built. CareerInfinity is developed one phase at a time. This feature is on the roadmap and will be added in a future update.
+      </p>
+      <button class="modal-action-btn" id="modalActionBtn" type="button">Got it!</button>
+    </div>
+  </div>
+
+  <!-- Dashboard JavaScript -->
+  <script src="dashboard.js"></script>
+</body>
+</html>

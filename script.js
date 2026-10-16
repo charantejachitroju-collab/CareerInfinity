@@ -269,10 +269,21 @@ function initLoginForm(form) {
 
     // All validation passed: Simulate asynchronous network call
     simulateAuthRequest(submitBtn, () => {
+      // Store only the demo email (NOT the password) for dashboard display.
+      // This is safe: we never store passwords in sessionStorage.
+      // In Phase 2, real Firebase Auth will manage the user session.
+      sessionStorage.setItem('ci_demo_user', emailValue);
+      sessionStorage.setItem('ci_demo_active', 'true');
+
       showToast(
-        'Sign In Simulation Successful!',
-        `Authorized as ${emailValue}. Client validation complete. Ready for Firebase Auth integration in Phase 2.`
+        'Sign In Successful — Loading Dashboard',
+        `Welcome! Redirecting to your CareerInfinity Dashboard...`
       );
+
+      // Navigate to the dashboard after a short delay so the user sees the toast
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 1400);
     });
   });
 }

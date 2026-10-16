@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CareerInfinity Resume Manager — Upload, view, and manage your resume securely. Supports PDF and DOCX files up to 5 MB.">
+  <title>My Resume | CareerInfinity — AI-Powered Career Intelligence Platform</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans — matches all other CareerInfinity pages -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Dashboard base styles (reused for sidebar, topbar, layout tokens) -->
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- Resume-specific styles -->
+  <link rel="stylesheet" href="resume.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- =====================================================================
+       MOBILE SIDEBAR OVERLAY
+       ===================================================================== -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <!-- =====================================================================
+       SIDEBAR NAVIGATION
+       ===================================================================== -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+
+    <!-- Sidebar Logo & Brand -->
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+      </div>
+      <span class="sidebar-logo-text">CareerInfinity</span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav" aria-label="Dashboard sections">
+      <ul class="nav-list" role="list">
+
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link" id="navDashboard" aria-label="Dashboard">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </li>
+
+        <!-- My Profile -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navProfile" aria-label="My Profile — coming soon" data-module="My Profile">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span class="nav-label">My Profile</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- My Resume (Active) -->
+        <li class="nav-item">
+          <a href="resume.html" class="nav-link active" id="navResume" aria-current="page" aria-label="My Resume — current page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">My Resume</span>
+          </a>
+        </li>
+
+        <!-- Skills Assessment -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navSkills" aria-label="Skills Assessment — coming soon" data-module="Skills Assessment">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Skills Assessment</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Career Roadmap -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navRoadmap" aria-label="Career Roadmap — coming soon" data-module="Career Roadmap">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Career Roadmap</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Learning Resources -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navLearning" aria-label="Learning Resources — coming soon" data-module="Learning Resources">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Learning Resources</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Job Opportunities -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navJobs" aria-label="Job Opportunities — coming soon" data-module="Job Opportunities">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Job Opportunities</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Divider -->
+        <li class="nav-divider" role="separator" aria-hidden="true"></li>
+
+        <!-- Settings -->
+        <li class="nav-item">
+          <a href="#" class="nav-link coming-soon-link" id="navSettings" aria-label="Settings — coming soon" data-module="Settings">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+            </span>
+            <span class="nav-label">Settings</span>
+            <span class="nav-badge coming-soon-badge" aria-label="Coming soon">Soon</span>
+          </a>
+        </li>
+
+        <!-- Logout -->
+        <li class="nav-item">
+          <button class="nav-link nav-logout-btn" id="logoutBtn" type="button" aria-label="Sign out and return to login page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </span>
+            <span class="nav-label">Logout</span>
+          </button>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Sidebar disclaimer -->
+    <div class="sidebar-disclaimer" role="note" aria-label="Module information">
+      <span class="disclaimer-icon" aria-hidden="true">&#9432;</span>
+      <p>Phase 3 — Resume Upload Module. Connected to Supabase.</p>
+    </div>
+
+  </aside>
+
+  <!-- =====================================================================
+       MAIN CONTENT AREA
+       ===================================================================== -->
+  <div class="dashboard-wrapper">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="topbar" role="banner">
+
+      <!-- Mobile hamburger menu button -->
+      <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
+
+      <!-- Breadcrumb / page title -->
+      <div class="topbar-welcome">
+        <div class="resume-breadcrumb" aria-label="Breadcrumb navigation">
+          <a href="dashboard.html" class="breadcrumb-link" id="breadcrumbDashboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            Dashboard
+          </a>
+          <span class="breadcrumb-sep" aria-hidden="true">/</span>
+          <span class="breadcrumb-current" aria-current="page">My Resume</span>
+        </div>
+        <h1 class="topbar-greeting">My Resume</h1>
+        <p class="topbar-subtext">Upload and manage your resume securely in one place.</p>
+      </div>
+
+      <!-- Right-side topbar controls -->
+      <div class="topbar-controls">
+        <!-- User avatar area -->
+        <div class="topbar-avatar-btn" id="avatarBtn" aria-label="Logged in user">
+          <div class="avatar-circle" id="avatarCircle" aria-hidden="true">
+            <span id="avatarInitials">CI</span>
+          </div>
+          <span class="avatar-name" id="avatarName">Loading...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN SCROLLABLE CONTENT -->
+    <main class="dashboard-main" id="resumeMain" aria-label="Resume management">
+
+      <!-- ================================================================
+           AUTH CHECK — shown while checking auth state
+           ================================================================ -->
+      <div class="resume-auth-loading" id="resumeAuthLoading" aria-live="polite" aria-busy="true">
+        <div class="auth-loading-spinner" aria-hidden="true">
+          <div class="spinner-ring"></div>
+        </div>
+        <p>Checking your session...</p>
+      </div>
+
+      <!-- ================================================================
+           CONFIGURATION ERROR — shown if Supabase is not configured
+           ================================================================ -->
+      <div class="resume-config-error" id="resumeConfigError" hidden aria-live="assertive">
+        <div class="config-error-card">
+          <div class="config-error-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <h2>Supabase Not Configured</h2>
+          <p>
+            The Resume module requires a Supabase connection. Please open
+            <code>supabase-client.js</code> and replace
+            <code>YOUR_SUPABASE_PROJECT_URL</code> and
+            <code>YOUR_SUPABASE_ANON_PUBLIC_KEY</code> with your real project values.
+          </p>
+          <p class="config-steps">
+            Find them at: <strong>Supabase Dashboard → Settings → API</strong>
+          </p>
+          <a href="dashboard.html" class="resume-btn resume-btn--secondary" id="configErrorDashboardLink">Return to Dashboard</a>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           MAIN RESUME CONTENT — shown when authenticated
+           ================================================================ -->
+      <div class="resume-content" id="resumeContent" hidden>
+
+        <!-- ============================================================
+             SECTION: UPLOAD AREA
+             ============================================================ -->
+        <section class="resume-section" aria-labelledby="uploadHeading">
+          <div class="resume-section-header">
+            <div>
+              <h2 class="resume-section-title" id="uploadHeading">Upload Resume</h2>
+              <p class="resume-section-subtitle">
+                Accepted formats: PDF, DOCX &nbsp;&bull;&nbsp; Maximum size: 5 MB
+              </p>
+            </div>
+          </div>
+
+          <!-- Drag and Drop Upload Zone -->
+          <div
+            class="upload-zone"
+            id="uploadZone"
+            role="button"
+            tabindex="0"
+            aria-label="Drag and drop your resume here, or click to browse files"
+            aria-describedby="uploadHint"
+          >
+            <!-- Hidden file input -->
+            <input
+              type="file"
+              id="resumeFileInput"
+              class="upload-file-input"
+              accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              aria-label="Select resume file"
+              aria-describedby="uploadHint"
+            >
+
+            <!-- Upload zone idle state -->
+            <div class="upload-zone-idle" id="uploadZoneIdle">
+              <div class="upload-icon-wrap" aria-hidden="true">
+                <div class="upload-icon-ring"></div>
+                <svg class="upload-icon-svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <p class="upload-drag-text">Drag &amp; drop your resume here</p>
+              <p class="upload-or-text" id="uploadHint">or</p>
+              <button
+                type="button"
+                class="resume-btn resume-btn--primary upload-browse-btn"
+                id="uploadBrowseBtn"
+                aria-label="Browse files to upload a resume"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Browse Files
+              </button>
+              <p class="upload-formats-text">PDF or DOCX &nbsp;&bull;&nbsp; Max 5 MB</p>
+            </div>
+
+            <!-- Upload zone dragging-over state (CSS toggles visibility) -->
+            <div class="upload-zone-dragover" id="uploadZoneDragover" aria-hidden="true">
+              <div class="dragover-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+              </div>
+              <p class="dragover-text">Drop your file here</p>
+            </div>
+
+          </div>
+
+          <!-- File selected preview (shown after file is chosen, before upload) -->
+          <div class="file-preview-card" id="filePreviewCard" hidden>
+            <div class="file-preview-icon" id="filePreviewIcon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+            </div>
+            <div class="file-preview-info">
+              <p class="file-preview-name" id="filePreviewName">filename.pdf</p>
+              <p class="file-preview-meta" id="filePreviewMeta">PDF &nbsp;&bull;&nbsp; 1.2 MB</p>
+            </div>
+            <div class="file-preview-actions">
+              <button type="button" class="resume-btn resume-btn--primary" id="confirmUploadBtn" aria-label="Confirm and upload this file">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Upload
+              </button>
+              <button type="button" class="resume-btn resume-btn--ghost" id="cancelFileBtn" aria-label="Cancel — remove selected file">
+                Cancel
+              </button>
+            </div>
+          </div>
+
+          <!-- Upload progress bar -->
+          <div class="upload-progress-wrap" id="uploadProgressWrap" hidden aria-live="polite" aria-busy="true">
+            <div class="upload-progress-header">
+              <div class="upload-progress-icon" aria-hidden="true">
+                <div class="progress-spinner"></div>
+              </div>
+              <div class="upload-progress-info">
+                <p class="upload-progress-label" id="uploadProgressLabel">Uploading resume...</p>
+                <p class="upload-progress-file" id="uploadProgressFile"></p>
+              </div>
+              <span class="upload-progress-pct" id="uploadProgressPct" aria-live="polite">0%</span>
+            </div>
+            <div class="upload-progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="uploadProgressBar" aria-label="Upload progress">
+              <div class="upload-progress-bar-fill" id="uploadProgressFill" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Validation / upload result message -->
+          <div class="upload-message" id="uploadMessage" hidden aria-live="assertive" role="alert"></div>
+
+        </section>
+
+        <!-- ============================================================
+             SECTION: RESUME LIST / MANAGEMENT
+             ============================================================ -->
+        <section class="resume-section" aria-labelledby="myResumesHeading">
+          <div class="resume-section-header">
+            <div>
+              <h2 class="resume-section-title" id="myResumesHeading">My Resumes</h2>
+              <p class="resume-section-subtitle" id="resumeCountSubtitle">Manage your uploaded resume files.</p>
+            </div>
+          </div>
+
+          <!-- Loading state for resume list -->
+          <div class="resume-list-loading" id="resumeListLoading" aria-live="polite" aria-busy="true">
+            <div class="list-loading-row" aria-hidden="true"></div>
+            <div class="list-loading-row" aria-hidden="true"></div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="resume-empty-state" id="resumeEmptyState" hidden>
+            <div class="empty-state-icon" aria-hidden="true">
+              <div class="empty-state-ring"></div>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="empty-state-title">No resume uploaded yet</h3>
+            <p class="empty-state-desc">
+              Upload your resume to get started. Your resume is stored securely and only you can access it.
+            </p>
+            <button type="button" class="resume-btn resume-btn--primary" id="emptyStateUploadBtn" aria-label="Upload your resume now">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              Upload Resume
+            </button>
+          </div>
+
+          <!-- Resume list (populated by JS) -->
+          <ul class="resume-list" id="resumeList" role="list" aria-label="Uploaded resumes" hidden></ul>
+
+        </section>
+
+      </div>
+      <!-- end #resumeContent -->
+
+      <!-- Resume page footer -->
+      <footer class="dashboard-footer" role="contentinfo" id="resumeFooter" hidden>
+        <p>&copy; 2026 CareerInfinity &bull; AI-Powered Career Intelligence Platform &bull; Phase 3: Resume Upload Module</p>
+        <p class="footer-note">Your resume is stored privately in Supabase Storage and is only accessible to you.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       DELETE CONFIRMATION MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle" aria-describedby="deleteModalDesc" hidden>
+    <div class="modal-card delete-modal-card">
+      <button class="modal-close-btn" id="deleteModalCloseBtn" type="button" aria-label="Close this dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-icon delete-modal-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+          <line x1="10" y1="11" x2="10" y2="17"></line>
+          <line x1="14" y1="11" x2="14" y2="17"></line>
+        </svg>
+      </div>
+      <h2 class="modal-title" id="deleteModalTitle">Delete Resume?</h2>
+      <p class="modal-desc" id="deleteModalDesc">
+        Are you sure you want to permanently delete
+        <strong id="deleteModalFileName">this resume</strong>?
+        This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="resume-btn resume-btn--danger" id="confirmDeleteBtn" aria-label="Confirm deletion">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+          </svg>
+          Yes, Delete
+        </button>
+        <button type="button" class="resume-btn resume-btn--secondary" id="cancelDeleteBtn" aria-label="Cancel — keep resume">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       "COMING SOON" MODAL (reused from dashboard)
+       ===================================================================== -->
+  <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" hidden>
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Close this dialog">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+      </div>
+      <h2 class="modal-title" id="modalTitle">Coming Soon</h2>
+      <p class="modal-desc" id="modalDesc">
+        <strong id="modalModuleName">This module</strong> is not yet built. CareerInfinity is developed one phase at a time. This feature is on the roadmap and will be added in a future update.
+      </p>
+      <button class="modal-action-btn" id="modalActionBtn" type="button">Got it!</button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       TOAST NOTIFICATION
+       ===================================================================== -->
+  <aside id="resumeToast" class="resume-toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <div class="resume-toast-icon" id="resumeToastIcon" aria-hidden="true"></div>
+    <div class="resume-toast-content">
+      <p class="resume-toast-title" id="resumeToastTitle"></p>
+      <p class="resume-toast-message" id="resumeToastMessage"></p>
+    </div>
+    <button type="button" class="resume-toast-close" id="resumeToastClose" aria-label="Close notification">&times;</button>
+  </aside>
+
+  <!-- =====================================================================
+       JAVASCRIPT — ES Module
+       ===================================================================== -->
+  <script type="module" src="resume.js"></script>
+
+</body>
+</html>
